@@ -9,11 +9,6 @@
 #import "WTEmoticonInputView.h"
 #import "WTEmoticonPageView.h"
 
-#define sendBtnW 60
-
-#define rows 3
-
-
 @interface WTEmoticonInputView ()<UIScrollViewDelegate>
 
 @property(nonatomic, strong) UIScrollView *baseView;
@@ -100,8 +95,8 @@
     _pageControl.numberOfPages = ceilf([WTUtils getEmoticonData].allKeys.count / 20.f);
     
     self.frame = CGRectMake(0, kMainScreenHeight, kMainScreenWidth, kKeyBoardH - 40);
-    self.baseView.frame = CGRectMake(0, 0, kMainScreenWidth, rows * kEmotionW +(rows + 1) * kPageH);
-    self.baseView.contentSize = CGSizeMake(kMainScreenWidth * _pageControl.numberOfPages + 1, rows * kEmotionW +(rows + 1) * kPageH);
+    self.baseView.frame = CGRectMake(0, 0, kMainScreenWidth, EmotionRows * kEmotionW +(EmotionRows + 1) * kPageH);
+    self.baseView.contentSize = CGSizeMake(kMainScreenWidth * _pageControl.numberOfPages + 1, EmotionRows * kEmotionW +(EmotionRows + 1) * kPageH);
     self.pageControl.frame = CGRectMake(0, CGRectGetMaxY(self.baseView.frame) + 0, kMainScreenWidth, 10);
 }
 
@@ -114,7 +109,7 @@
         WTEmoticonPageView *pageView = [[WTEmoticonPageView alloc]init];
         pageView.page = i;
         [self.baseView addSubview:pageView];
-        pageView.frame = CGRectMake(i * kMainScreenWidth, 0, kMainScreenWidth, rows * kEmotionW +(rows + 1) * kPageH);
+        pageView.frame = CGRectMake(i * kMainScreenWidth, 0, kMainScreenWidth, EmotionRows * kEmotionW +(EmotionRows + 1) * kPageH);
         __weak typeof (self) weakSelf = self;
         [pageView setDeleteButtonClick:^(WTEmoticonButton *deleteButton) {
             if ([weakSelf.delegate respondsToSelector:@selector(clickDelete)]) {

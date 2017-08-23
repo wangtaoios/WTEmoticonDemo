@@ -86,11 +86,13 @@
     
     YYTextSimpleEmoticonParser *parser = [YYTextSimpleEmoticonParser new];
     parser.emoticonMapper = mapper;
+    
     _textView.textParser = parser;
     
 }
 
-- (UIImage *)imageWithName:(NSString *)name {
+- (UIImage *)imageWithName:(NSString *)name
+{
     YYImage *image = [YYImage imageNamed:[NSString stringWithFormat:@"smiley_%@", name]];
     image.preloadAllAnimatedImageFrames = YES;
     return image;
@@ -163,9 +165,9 @@
         [_toolbarEmoticonButton setImage:[UIImage imageNamed:@"compose_emoticonbutton_background"] forState:UIControlStateNormal];
         [_toolbarEmoticonButton setImage:[UIImage imageNamed:@"compose_emoticonbutton_background_highlighted"] forState:UIControlStateHighlighted];
     } else {
-        WTEmoticonInputView *v = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 300)];
-        v.delegate = self;
-        _textView.inputView = v;
+        WTEmoticonInputView *emoticonInputView = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 300)];
+        emoticonInputView.delegate = self;
+        _textView.inputView = emoticonInputView;
         [_textView reloadInputViews];
         [_textView becomeFirstResponder];
         
