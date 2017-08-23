@@ -73,6 +73,7 @@
     _textView.allowsCopyAttributedString = NO;
     _textView.font = [UIFont systemFontOfSize:17];
     _textView.delegate = self;
+    _textView.placeholderText = @"分享新鲜事…";
     _textView.inputAccessoryView = [UIView new];
     [self.view addSubview:_textView];
     
