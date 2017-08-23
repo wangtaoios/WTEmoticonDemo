@@ -20,13 +20,6 @@
 
 @property(nonatomic, strong) UIPageControl *pageControl;
 
-/*
- * 用来判断是否是仅取消文字键盘的第一响应,不处理控件的改变;
- * 只有在键盘切换时候赋值为yes，其他任何情况都是no;
- * 用来解决切换键盘闪动的问题
- */
-//@property(nonatomic, assign) BOOL onlyHideSysKboard;
-
 @end
 
 @implementation WTEmoticonInputView

@@ -13,7 +13,6 @@
 #import <YYText.h>
 #import <YYImage.h>
 
-
 @interface WTEmoticonVC () <YYTextViewDelegate, YYTextKeyboardObserver, EmotionKeyBoardDelegate>
 
 @property (nonatomic, strong) YYTextView *textView;
