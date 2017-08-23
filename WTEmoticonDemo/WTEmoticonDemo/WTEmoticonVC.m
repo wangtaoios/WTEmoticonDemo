@@ -178,22 +178,15 @@
 {
     NSString *emotionString = [[WTUtils getEmoticonData] allKeysForObject:name][0];
     [_textView replaceRange:_textView.selectedTextRange withText:emotionString];
-    
-    NSLog(@"000000");
-    NSLog(@"%@", _textView.text);
 }
 
 - (void)clickDelete
 {
     [self.textView deleteBackward];
-    
 }
-
 
 #pragma mark @protocol YYTextViewDelegate
 - (void)textViewDidChange:(YYTextView *)textView {
-    NSLog(@"111111");
-    NSLog(@"%@", _textView.text);
 
 }
 
