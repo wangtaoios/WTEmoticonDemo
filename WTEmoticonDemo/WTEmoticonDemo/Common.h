@@ -36,7 +36,6 @@
 #define kEmotionDelete      @"expression_delete"
 
 
-
 #define kToolbarHeight      (35 + 46)
 
 
