@@ -34,8 +34,6 @@
     return _pageControl;
 }
 
-
-
 //根视图（最底部滚动视图）
 - (UIScrollView *)baseView {
     

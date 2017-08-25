@@ -24,7 +24,6 @@
 
 @implementation WTEmoticonVC
 
-
 - (instancetype)init {
     self = [super init];
     [[YYTextKeyboardManager defaultManager] addObserver:self];
