@@ -110,7 +110,7 @@
     _toolbarBackground.wt_bottom = _toolbar.wt_height;
     _toolbarBackground.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
     [_toolbar addSubview:_toolbarBackground];
-    _toolbarBackground.wt_height = 300; // extend
+    _toolbarBackground.wt_height = kToolbarHeight; 
     
     UIView *line = [UIView new];
     line.backgroundColor = WTHexColor(0xBFBFBF);
@@ -122,9 +122,7 @@
     _toolbarEmoticonButton = [self _toolbarButtonWithImage:@"compose_emoticonbutton_background"
                                                  highlight:@"compose_emoticonbutton_background_highlighted"];
     
-    CGFloat one = _toolbar.wt_width / 5;
-    _toolbarEmoticonButton.wt_centerX = one * 0.5;
-    
+    _toolbarEmoticonButton.wt_left = 10;
     _toolbar.wt_bottom = self.view.wt_height;
     [self.view addSubview:_toolbar];
 }
@@ -143,16 +141,13 @@
 }
 
 - (void)cancel {
-    
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (void)sure {
-    
     [self.view endEditing:YES];
-
 }
 
 - (void)_buttonClicked:(UIButton *)button {
@@ -164,7 +159,7 @@
         [_toolbarEmoticonButton setImage:[UIImage imageNamed:@"compose_emoticonbutton_background"] forState:UIControlStateNormal];
         [_toolbarEmoticonButton setImage:[UIImage imageNamed:@"compose_emoticonbutton_background_highlighted"] forState:UIControlStateHighlighted];
     } else {
-        WTEmoticonInputView *emoticonInputView = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, 300)];
+        WTEmoticonInputView *emoticonInputView = [[WTEmoticonInputView alloc] initWithFrame:CGRectMake(0, 0, kMainScreenWidth, kKeyBoardH)];
         emoticonInputView.delegate = self;
         _textView.inputView = emoticonInputView;
         [_textView reloadInputViews];

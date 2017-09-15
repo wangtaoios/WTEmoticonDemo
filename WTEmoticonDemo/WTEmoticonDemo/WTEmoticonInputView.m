@@ -88,26 +88,21 @@
 }
 
 - (void)initSubViewFrames {
+    self.pageControl.numberOfPages = ceilf([WTUtils getEmoticonData].allKeys.count / 20.f);
     
-    CGFloat kPageH = (kMainScreenWidth - EmotionRowCount * EmotionBtnW) / (EmotionRowCount + 1);
-    _pageControl.numberOfPages = ceilf([WTUtils getEmoticonData].allKeys.count / 20.f);
+    self.baseView.frame = CGRectMake(0, 0, self.wt_width, self.wt_height - kPageControlH);
+    self.baseView.contentSize = CGSizeMake(self.baseView.wt_width * self.pageControl.numberOfPages + 1, self.baseView.wt_height);
     
-    self.frame = CGRectMake(0, kMainScreenHeight, kMainScreenWidth, kKeyBoardH - 40);
-    self.baseView.frame = CGRectMake(0, 0, kMainScreenWidth, EmotionRows * kEmotionW +(EmotionRows + 1) * kPageH);
-    self.baseView.contentSize = CGSizeMake(kMainScreenWidth * _pageControl.numberOfPages + 1, EmotionRows * kEmotionW +(EmotionRows + 1) * kPageH);
-    self.pageControl.frame = CGRectMake(0, CGRectGetMaxY(self.baseView.frame) + 0, kMainScreenWidth, 10);
+    self.pageControl.frame = CGRectMake(0, self.baseView.wt_bottom, self.wt_width, kPageControlH);
 }
 
 //根据页数（通过拥有的表情的个数除以每页表情数计算出来）创建pageView
 - (void)creatPageViews {
-    
-    CGFloat kPageH = (kMainScreenWidth - EmotionRowCount * EmotionBtnW) / (EmotionRowCount + 1);
-    
-    for (int i = 0; i < _pageControl.numberOfPages; i ++) {
-        WTEmoticonPageView *pageView = [[WTEmoticonPageView alloc]init];
+    for (int i = 0; i < self.pageControl.numberOfPages; i ++) {
+        WTEmoticonPageView *pageView = [[WTEmoticonPageView alloc] init];
         pageView.page = i;
         [self.baseView addSubview:pageView];
-        pageView.frame = CGRectMake(i * kMainScreenWidth, 0, kMainScreenWidth, EmotionRows * kEmotionW +(EmotionRows + 1) * kPageH);
+        pageView.frame = CGRectMake(i * self.baseView.wt_width, 0, self.baseView.wt_width, self.baseView.wt_height);
         __weak typeof (self) weakSelf = self;
         [pageView setDeleteButtonClick:^(WTEmoticonButton *deleteButton) {
             if ([weakSelf.delegate respondsToSelector:@selector(clickDelete)]) {

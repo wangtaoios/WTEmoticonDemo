@@ -28,10 +28,12 @@
 
 // 键盘
 
-//键盘高度
-#define kKeyBoardH          (4 * kMainScreenWidth * 0.0875 + (3 + 1) * ((kMainScreenWidth - 7 * kMainScreenWidth * 0.0875 ) / 8) + 20)
 //表情按钮宽高
 #define kEmotionW           (kMainScreenWidth * 0.0875)
+//表情按钮宽高
+#define kPageControlH       20
+//键盘高度
+#define kKeyBoardH          (3 * kEmotionW + 4 * ((kMainScreenWidth - 7 * kEmotionW ) / 8) + kPageControlH)
 
 #define kEmotionDelete      @"expression_delete"
 
